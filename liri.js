@@ -7,10 +7,10 @@ var client = new Twitter({
   access_token_secret: 'MXMs2SEjRZfrQKJ4hcgq3kovADjBpbpeiSZG8mKx33eth'
 });
  
-var params = {screen_name: 'nodejs'};
+var params = {screen_name: 'iamcurtishayes'};
 client.get('statuses/user_timeline', params, function(error, tweets, response) {
   if (!error) {
-    console.log(tweets);
+    console.log(JSON.stringify(tweets, null, 2));
 	console.log("Where's the Tweets?");
   }
 });
