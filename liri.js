@@ -17,17 +17,17 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
 
 //********************************************************************
 
-// var Spotify = require('node-spotify-api');
+var Spotify = require('node-spotify-api');
  
-// var spotify = new Spotify({
-//   id: '4167836633ed463b9b49fa57085f49da',
-//   secret: 'fae01f2aef6a475790ff88bb6b552613'
-// });
+var spotify = new Spotify({
+  id: '4167836633ed463b9b49fa57085f49da',
+  secret: 'fae01f2aef6a475790ff88bb6b552613'
+});
  
-// spotify.search({ type: 'track', query: 'I Want It That Way' }, function(err, data) {
-//   if (err) {
-//     return console.log('Error occurred: ' + err);
-//   }
-// console.log("Spotify is logging");
-// console.log(JSON.stringify(data, null, 2)); 
-// });
+spotify.search({ type: 'track', query: 'I Want It That Way' }, function(err, data) {
+  if (err) {
+    return console.log('Error occurred: ' + err);
+  }
+console.log("Spotify is logging");
+console.log(JSON.stringify(data, null, 2)); 
+});
