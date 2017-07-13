@@ -1,10 +1,14 @@
 var command = process.argv[2];
 
 var nodeArgvs = process.argv;
-
-for (var i = 3; i < nodeArgvs.length; i++);
-
 var userInput = "";
+
+for (var i = 3; i < nodeArgvs.length; i++) {
+
+  //going to add the code to create the string (userInput) for the spotify and other queries.
+}
+
+
 
 var keys = require('./keys.js');
 var Twitter = require('twitter');
@@ -21,8 +25,9 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
 
     for (var i = 0; i < tweets.length; i++){
 
-     console.log(tweets[i]['text']);
-  console.log("Where's the Tweets?"); 
+    console.log(tweets[i]['created_at']);
+    console.log(tweets[i]['text']);
+    
     }
     
   }
@@ -30,17 +35,17 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
 }
 //********************************************************************
 
-// var Spotify = require('node-spotify-api');
+var Spotify = require('node-spotify-api');
 
-// var spotify = new Spotify(keys.spotify);
+var spotify = new Spotify(keys.spotify);
  
-// spotify.search({ type: 'track', query: 'I Want It That Way' }, function(err, data) {
-//   if (err) {
-//     return console.log('Error occurred: ' + err);
-//   }
-// console.log("Spotify is logging");
-// console.log(data.tracks); 
-// });
+spotify.search({ type: 'track', query: 'I Want It That Way' }, function(err, data) {
+  if (err) {
+    return console.log('Error occurred: ' + err);
+  }
+console.log("Spotify is logging");
+console.log(data.tracks); 
+});
 
 function controller() {
   switch(command){
