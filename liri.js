@@ -1,16 +1,21 @@
+var command = process.argv[2];
+
+var nodeArgvs = process.argv;
+
+for (var i = 3; i < nodeArgvs.length; i++);
+
+var userInput = "";
+
+var keys = require('./keys.js');
 var Twitter = require('twitter');
+
  
-var client = new Twitter({
-  consumer_key: 'CjDeGWUzMERwzwqHDjtZwQSVB',
-  consumer_secret: 'l6T0vLPI76h0LthLtfPK5g4roQGTlMZTYXUFjuwc93Lmr7Vwq8',
-  access_token_key: '885383032177397760-ukKKmMGhGM1mcMdjmzGPOJGKS0fRAwG',
-  access_token_secret: 'MXMs2SEjRZfrQKJ4hcgq3kovADjBpbpeiSZG8mKx33eth'
-});
+var client = new Twitter(keys.twitterKeys);
  
 var params = {screen_name: 'iamcurtishayes'};
 client.get('statuses/user_timeline', params, function(error, tweets, response) {
   if (!error) {
-    console.log(JSON.stringify(tweets, null, 2));
+    console.log(tweets.id);
 	console.log("Where's the Tweets?");
   }
 });
@@ -18,16 +23,31 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
 //********************************************************************
 
 var Spotify = require('node-spotify-api');
- 
-var spotify = new Spotify({
-  id: '4167836633ed463b9b49fa57085f49da',
-  secret: 'fae01f2aef6a475790ff88bb6b552613'
-});
+
+var spotify = new Spotify(keys.spotify);
  
 spotify.search({ type: 'track', query: 'I Want It That Way' }, function(err, data) {
   if (err) {
     return console.log('Error occurred: ' + err);
   }
 console.log("Spotify is logging");
-console.log(JSON.stringify(data, null, 2)); 
+console.log(data.tracks); 
 });
+
+if (command === "my-tweets") {
+  outputNum = parseFloat(num1) + parseFloat(num2);
+}
+
+else if (command === "spotify-this-song") {
+  outputNum = parseFloat(num1) - parseFloat(num2);
+}
+
+else if (command === "movie-this") {
+  outputNum = parseFloat(num1) * parseFloat(num2);
+}
+
+else if (command === "do-what-it-says") {
+  outputNum = parseFloat(num1) / parseFloat(num2);
+}else {
+  
+}
